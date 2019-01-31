@@ -17,7 +17,7 @@ binary_dim = 8
  
 largest_number = pow(2,binary_dim)
 binary = np.unpackbits(
-    np.array([list(range(largest_number))],dtype=np.uint8).T,axis=1)
+    np.array([list(range(largest_number))],dtype=np.uint8).T,axis=1) #平展成二进制表达
 for i in range(largest_number):
     int2binary[i] = binary[i]
  
@@ -93,7 +93,7 @@ for j in range(10000):
         layer_1 = layer_1_values[-position-1]
         prev_layer_1 = layer_1_values[-position-2]
         
-        # error at output layer
+        # error at output layerz
         layer_2_delta = layer_2_deltas[-position-1]
         # error at hidden layer
         layer_1_delta = (future_layer_1_delta.dot(synapse_h.T) + \
@@ -116,11 +116,11 @@ for j in range(10000):
     
     # print out progress
     if(j % 1000 == 0):
-        print("Error:" + str(overallError))
-        print("Pred:" + str(d))
-        print("True:" + str(c))
+        print(("Error:" + str(overallError)))
+        print(("Pred:" + str(d)))
+        print(("True:" + str(c)))
         out = 0
         for index,x in enumerate(reversed(d)):
             out += x*pow(2,index)
-        print(str(a_int) + " + " + str(b_int) + " = " + str(out))
+        print((str(a_int) + " + " + str(b_int) + " = " + str(out)))
         print("------------")
